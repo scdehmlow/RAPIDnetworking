@@ -1,0 +1,6 @@
+message SensorData {
+     
+    required float value = 1;
+    required int32 sensorId = 2;
+    required int32 timestamp = 3;
+}
