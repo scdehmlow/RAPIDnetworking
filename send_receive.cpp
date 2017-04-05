@@ -8,6 +8,10 @@ This can be changed to whatever format, it was just the first thing that came to
 sends the data to node 00.
 
 This node is setup to be node 03
+
+In order to make this file work, it needs to be in the RF24Network/examples_RPi/ library.
+You must also edit the Makefile in that directory to contrain the name send_receive.cpp on the
+line that has all of the other example's names.
 */
 
 #include <RF24/RF24.h>
