@@ -15,6 +15,11 @@ if __name__ == "__main__":
 else:
   exit(0)
 
+def getUTC():
+  return (datetime.utcnow().isoformat())
+  
+msg = getUTC() + " " + msg
+  
 # TCP IP/Port and Connect ####################################################################  
 TCP_IP = '152.228.80.148'
 TCP_PORT = 5005
