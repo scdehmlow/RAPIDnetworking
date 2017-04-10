@@ -18,9 +18,13 @@
 #include <RF24Network/RF24Network.h>
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <pb_encode.h>
 #include <pb_decode.h>
 #include "nanopb_RPI.pb.h"
+#include <string.h>
+
+using namespace std;
 
 
 RF24 radio(RPI_V2_GPIO_P1_15, BCM2835_SPI_CS0, BCM2835_SPI_SPEED_8MHZ);  
@@ -38,12 +42,12 @@ int main(int argc, char** argv) {
   radio.printDetails();
 
   //Shaffer
-  uint8_t buffer[32];
+  uint8_t buffer[64];
   size_t message_length=sizeof(buffer);
   bool status;
 
-//  SensorData message = SensorData_init_zero;
-//  pb_istream_t stream = pb_istream_from_buffer(buffer, message_length);
+  SensorData message = SensorData_init_zero;
+  pb_istream_t stream = pb_istream_from_buffer(buffer, message_length);
 
 while(1)
 {
@@ -61,8 +65,8 @@ while(1)
 //    printf("rcv\n");
     RF24NetworkHeader header;
     network.peek(header);
-    
-    uint8_t dat[32];
+	char TCPmsg[512]={};
+    uint8_t dat[64];
     switch(header.type){
       // Display the incoming millis() values from the sensor nodes
       case 'M': network.read(header,&dat,message_length); 
@@ -77,9 +81,27 @@ while(1)
 			return 1;
 		}
 		
-		printf("Value is: %f\n", message.value);
-		printf("SensorId is: %d\n", message.sensorId);
-		printf("timestamp is: %d\n", message.timestamp);
+		printf("SensorId is: %d------------------------- \n", message.sensorId);
+		if (message.has_value)
+		{
+			printf("Value is: %f\n", message.value);
+		}
+		if (message.has_timestamp)
+		{
+			printf("timestamp is: %d\n", message.timestamp);
+		}
+		if (message.has_temperature)
+		{
+			printf("Temperature: %f\n", message.temperature);
+		}
+		if (message.has_humidity)
+		{		
+			printf("Humidity: %f\n", message.humidity);
+		}
+		printf("---------------------------------------- \n");
+		snprintf(TCPmsg, sizeof(TCPmsg), "python3 SendTCP.py %d %f %d %f %f\n", message.sensorId, message.value, message.timestamp, message.temperature, message.humidity);
+		printf("%s\n",TCPmsg);
+		system(TCPmsg);
                 break;
 	}
       default:  network.read(header,0,0); 
@@ -108,7 +130,5 @@ return 0;
 //  }
 //return 0;
 //}
-
-      
       
       
