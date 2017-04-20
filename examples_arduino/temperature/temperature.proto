@@ -1,0 +1,5 @@
+message SensorData {
+     
+    required int32 sensorId = 1;
+    optional float temperature = 4;
+}
