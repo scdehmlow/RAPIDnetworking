@@ -1,0 +1,167 @@
+start
+================ SPI Configuration ================
+CSN Pin  	 = CE0 (PI Hardware Driven)
+CE Pin  	 = Custom GPIO22
+Clock Speed	 = 8 Mhz
+================ NRF Configuration ================
+STATUS		 = 0x0e RX_DR=0 TX_DS=0 MAX_RT=0 RX_P_NO=7 TX_FULL=0
+RX_ADDR_P0-1	 = 0xccccccccc3 0xcccccccc3c
+RX_ADDR_P2-5	 = 0x33 0xce 0x3e 0xe3
+TX_ADDR		 = 0xcccccc3ecc
+RX_PW_P0-6	 = 0x20 0x20 0x20 0x20 0x20 0x20
+EN_AA		 = 0x3e
+EN_RXADDR	 = 0x3f
+RF_CH		 = 0x61
+RF_SETUP	 = 0x07
+CONFIG		 = 0x0f
+DYNPD/FEATURE	 = 0x3f 0x04
+Data Rate	 = 1MBPS
+Model		 = nRF24L01+
+CRC Length	 = 16 bits
+PA Power	 = PA_MAX
+Rcv 8 from 03
+SensorId is: 1------------------------- 
+Temperature: 24.000000
+Humidity: 19.000000
+Rcv 8 from 05
+SensorId is: 3------------------------- 
+Value is: 409.000000
+timestamp is: 124
+Rcv 8 from 03
+SensorId is: 1------------------------- 
+Temperature: 24.000000
+Humidity: 19.000000
+Rcv 8 from 05
+SensorId is: 3------------------------- 
+Value is: 332.000000
+timestamp is: 125
+Rcv 8 from 03
+SensorId is: 1------------------------- 
+Temperature: 27.000000
+Humidity: 29.000000
+Rcv 8 from 05
+SensorId is: 3------------------------- 
+Value is: 330.000000
+timestamp is: 126
+Rcv 8 from 03
+SensorId is: 1------------------------- 
+Temperature: 24.000000
+Humidity: 19.000000
+Rcv 8 from 05
+SensorId is: 3------------------------- 
+Value is: 333.000000
+timestamp is: 127
+Rcv 8 from 03
+SensorId is: 1------------------------- 
+Temperature: 24.000000
+Humidity: 19.000000
+Rcv 8 from 05
+SensorId is: 3------------------------- 
+Value is: 331.000000
+timestamp is: 128
+Rcv 8 from 03
+SensorId is: 1------------------------- 
+Temperature: 27.000000
+Humidity: 29.000000
+Rcv 8 from 05
+SensorId is: 3------------------------- 
+Value is: 334.000000
+timestamp is: 129
+Rcv 8 from 03
+SensorId is: 1------------------------- 
+Temperature: 24.000000
+Humidity: 19.000000
+Rcv 8 from 05
+SensorId is: 3------------------------- 
+Value is: 266.000000
+timestamp is: 130
+Rcv 8 from 03
+SensorId is: 1------------------------- 
+Temperature: 24.000000
+Humidity: 19.000000
+Rcv 8 from 05
+SensorId is: 3------------------------- 
+Value is: 267.000000
+timestamp is: 131
+Rcv 8 from 03
+SensorId is: 1------------------------- 
+Temperature: 27.000000
+Humidity: 29.000000
+Rcv 8 from 05
+SensorId is: 3------------------------- 
+Value is: 207.000000
+timestamp is: 132
+Rcv 8 from 03
+SensorId is: 1------------------------- 
+Temperature: 27.000000
+Humidity: 29.000000
+Rcv 8 from 05
+SensorId is: 3------------------------- 
+Value is: 209.000000
+timestamp is: 133
+Rcv 8 from 03
+SensorId is: 1------------------------- 
+Temperature: 24.000000
+Humidity: 19.000000
+Rcv 8 from 05
+SensorId is: 3------------------------- 
+Value is: 200.000000
+timestamp is: 134
+Rcv 8 from 03
+SensorId is: 1------------------------- 
+Temperature: 24.000000
+Humidity: 19.000000
+Rcv 8 from 05
+SensorId is: 3------------------------- 
+Value is: 201.000000
+timestamp is: 135
+Rcv 8 from 03
+SensorId is: 1------------------------- 
+Temperature: 27.000000
+Humidity: 29.000000
+Rcv 8 from 05
+SensorId is: 3------------------------- 
+Value is: 201.000000
+timestamp is: 136
+Rcv 8 from 03
+SensorId is: 1------------------------- 
+Temperature: 24.000000
+Humidity: 19.000000
+Rcv 8 from 05
+SensorId is: 3------------------------- 
+Value is: 197.000000
+timestamp is: 137
+Rcv 8 from 03
+SensorId is: 1------------------------- 
+Temperature: 27.000000
+Humidity: 29.000000
+Rcv 8 from 05
+SensorId is: 3------------------------- 
+Value is: 197.000000
+timestamp is: 138
+Rcv 8 from 03
+SensorId is: 1------------------------- 
+Temperature: 27.000000
+Humidity: 29.000000
+Rcv 8 from 05
+SensorId is: 3------------------------- 
+Value is: 197.000000
+timestamp is: 139
+Rcv 8 from 03
+SensorId is: 1------------------------- 
+Temperature: 27.000000
+Humidity: 29.000000
+Rcv 8 from 05
+SensorId is: 3------------------------- 
+Value is: 197.000000
+timestamp is: 140
+Rcv 8 from 03
+SensorId is: 1------------------------- 
+Temperature: 27.000000
+Humidity: 29.000000
+Rcv 8 from 05
+SensorId is: 3------------------------- 
+Value is: 201.000000
+timestamp is: 141
+Rcv 8 from 03
+SensorId is: 1------
