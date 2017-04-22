@@ -21,9 +21,9 @@ def getUTC():
 msg = getUTC() + " " + msg
   
 # TCP IP/Port and Connect ####################################################################  
-TCP_IP = 'link.from-il.com'
+TCP_IP = 'winlink.from-il.com'
 TCP_PORT = 22110
-BUFFER_SIZE = 512
+BUFFER_SIZE = 1024
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((TCP_IP, TCP_PORT))
