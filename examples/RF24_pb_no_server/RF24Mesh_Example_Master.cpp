@@ -37,7 +37,9 @@ RF24Mesh mesh(radio,network);
 int main(int argc, char** argv) {
   
   time_t timev;
-  	
+  struct gm_time;
+  char isotime[sizeof("2017-04-21T08:00:00Z")];
+	  
   // Set the nodeID to 0 for the master node
   mesh.setNodeID(0);
   // Connect to the mesh
@@ -46,7 +48,7 @@ int main(int argc, char** argv) {
 //  radio.printDetails();
 
   //Shaffer
-  uint8_t buffer[64];
+  uint8_t buffer[32];
   size_t message_length=sizeof(buffer);
   bool status;
 
@@ -81,11 +83,12 @@ while(1)
 		if (!status)
 		{
 			printf("Decoding failed: %s\n", PB_GET_ERROR(&stream));
-			return 1;
+//			return 1;
 		}
 		
 		time(&timev);
-		cout << timev;
+		strftime(isotime,80,"%FT%TZ",gmtime(&timev));
+		cout << isotime;
 
 		cout << " " << (int)message.sensorId;
 		//printf("%d ", message.sensorId);
@@ -102,22 +105,22 @@ while(1)
 		if (message.has_temperature)
 		{
 			//printf("Temperature: %f ", message.temperature);
-			cout << " temp : " << (int)message.temperature;
+			cout << " tempr: " << (float)message.temperature;
 		}
 		if (message.has_humidity)
 		{		
 			//printf("Humidity: %f ", message.humidity);
-			cout << " humid: " << (int)message.humidity;
+			cout << " humid: " << (float)message.humidity;
 		}
 		if (message.has_pressure)
 		{
 			//printf("Pressure: %f ", message.pressure);
-			cout << " press: " << (int)message.pressure;
+			cout << " press: " << (float)message.pressure;
 		}
 		if (message.has_altitude)
 		{		
 			//printf("Altitude: %f ", message.altitude);
-			cout << " altit: " << (int)message.altitude;
+			cout << " altit: " << (float)message.altitude;
 		}
 		//printf('\n');
 		cout << endl;
