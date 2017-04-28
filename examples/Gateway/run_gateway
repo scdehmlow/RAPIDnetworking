@@ -1,0 +1,5 @@
+#!/bin/bash
+
+
+stdbuf -oL ./RF24Mesh_Example_Master | nc winlink.from-il.com 22110
+
