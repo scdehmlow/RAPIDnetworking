@@ -1,8 +1,0 @@
-message SensorData {
-     
-    required int32 sensorId = 1;
-    optional float temperature = 4;
-    optional float humidity = 5;
-    optional float pressure = 6;
-    optional float altitude = 7;
-}
