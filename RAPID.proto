@@ -1,0 +1,20 @@
+
+syntax = "proto2";
+
+message SensorData {
+     
+    required int32 sensorId = 1;
+    optional float value = 2;
+    optional int32 timestamp = 3;
+    optional float temperature = 4;
+    optional float humidity = 5;
+    optional float pressure = 6;
+    optional float altitude = 7;
+}
+
+message NodeData {
+    required uint32 nodeID = 1;
+    optional uint32 vbatt = 2;
+    optional uint32 timestamp = 3;
+    optional uint32 temperature = 4;
+}
