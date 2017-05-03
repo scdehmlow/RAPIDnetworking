@@ -1,0 +1,1 @@
+Note: Currently, makefile does not work. To get this to work without makefile, clone directory RF24_pb then overwrite file RF24Mesh_Example_Master.cpp with RF24_gateway.cpp and transfer in all .py files. Edit run_gateway.sh file to run the newly made RF24Mesh_Example_Master file. Finally run the run_gateway file.
