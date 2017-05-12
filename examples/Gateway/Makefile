@@ -30,7 +30,7 @@ endif
 
 ifeq "$(RPI)" "1"
 # The recommended compiler flags for the Raspberry Pi
-CCFLAGS=-Ofast -mfpu=vfp -mfloat-abi=hard -march=$(ARCH) -mtune=arm1176jzf-s -s -std=c++0x
+CCFLAGS=-Ofast -mfpu=vfp -mfloat-abi=hard -march=$(ARCH) -mtune=arm1176jzf-s -std=c++0x
 endif
 # flags for gcc
 CFLAGS= -Wall -Werror -g -O0
@@ -43,8 +43,7 @@ CSRC += $(NANOPB_DIR)/pb_common.c       # The nanopb common parts
 
 RF24_gateway: $(CSRC)
         $(CXX) $(CCFLAGS) -I$(NANOPB_DIR) -lrf24-bcm -lrf24network -lrf24mesh -oRF24_gateway $(CSRC)
-
-
+        
 # Build rule for the protocol
 nanopb_RPI.pb.c: nanopb_RPI.proto
         $(PROTOC) $(PROTOC_OPTS) --nanopb_out=. nanopb_RPI.proto
