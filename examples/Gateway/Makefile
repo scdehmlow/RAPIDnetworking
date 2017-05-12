@@ -42,12 +42,12 @@ CSRC += $(NANOPB_DIR)/pb_decode.c       # The nanopb decoder
 CSRC += $(NANOPB_DIR)/pb_common.c       # The nanopb common parts
 
 RF24_gateway: $(CSRC)
-        $(CXX) $(CCFLAGS) -I$(NANOPB_DIR) -lrf24-bcm -lrf24network -lrf24mesh -oRF24_gateway $(CSRC)
+                $(CXX) $(CCFLAGS) -I$(NANOPB_DIR) -lrf24-bcm -lrf24network -lrf24mesh -oRF24_gateway $(CSRC)
 
 
 # Build rule for the protocol
 nanopb_RPI.pb.c: nanopb_RPI.proto
-        $(PROTOC) $(PROTOC_OPTS) --nanopb_out=. nanopb_RPI.proto
+                $(PROTOC) $(PROTOC_OPTS) --nanopb_out=. nanopb_RPI.proto
 
 
 # define all programs
@@ -60,13 +60,13 @@ nanopb_RPI.pb.c: nanopb_RPI.proto
 #       $(CXX) ${CCFLAGS} -Wall -I../ -lrf24-bcm -lrf24network -lrf24mesh nano.o $@.cpp -o $@
 #
 clean:
-        rm -rf $(PROGRAMS)
+                rm -rf $(PROGRAMS)
 
 install: all
-        test -d $(prefix) || mkdir $(prefix)
-        test -d $(prefix)/bin || mkdir $(prefix)/bin
-        for prog in $(PROGRAMS); do \
-          install -m 0755 $$prog $(prefix)/bin; \
-        done
+                test -d $(prefix) || mkdir $(prefix)
+                test -d $(prefix)/bin || mkdir $(prefix)/bin
+                for prog in $(PROGRAMS); do \
+                  install -m 0755 $$prog $(prefix)/bin; \
+                done
 
 .PHONY: install
