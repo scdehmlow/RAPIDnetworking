@@ -42,8 +42,8 @@ void printtime() {
     rt = tp.tv_sec;
     info = gmtime(&rt);
     strftime(time_buffer,80,"%FT%T.",info);
-    double ut = tp.tv_usec;
-    printf("%s%.6f ",time_buffer,ut);
+    int ut = tp.tv_usec;
+    printf("%s%.6i ",time_buffer,ut);
 }
 
 int main(int argc, char** argv) {
@@ -52,10 +52,8 @@ int main(int argc, char** argv) {
     mesh.setNodeID(0);
     // Connect to the mesh
     mesh.begin();
-    mesh.setChannel(95);
+    mesh.setChannel();
 
-
-    //Shaffer
     uint8_t buffer[64];
     size_t message_length=sizeof(buffer);
     SensorData message = SensorData_init_zero;
