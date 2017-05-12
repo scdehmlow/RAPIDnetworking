@@ -43,7 +43,8 @@ CSRC += $(NANOPB_DIR)/pb_common.c       # The nanopb common parts
 
 RF24_gateway: $(CSRC)
         $(CXX) $(CCFLAGS) -I$(NANOPB_DIR) -lrf24-bcm -lrf24network -lrf24mesh -oRF24_gateway $(CSRC)
-        
+
+
 # Build rule for the protocol
 nanopb_RPI.pb.c: nanopb_RPI.proto
         $(PROTOC) $(PROTOC_OPTS) --nanopb_out=. nanopb_RPI.proto
