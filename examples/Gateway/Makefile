@@ -10,6 +10,8 @@
 # use make all and make install to install the examples
 # You can change the install directory by editing the prefix line
 #
+# Include the nanopb provided Makefile rules
+include ../../extra/nanopb.mk
 #
 #
 prefix := /usr/local
@@ -28,35 +30,43 @@ endif
 
 ifeq "$(RPI)" "1"
 # The recommended compiler flags for the Raspberry Pi
-CCFLAGS=-Ofast -mfpu=vfp -mfloat-abi=hard -march=$(ARCH) -mtune=arm1176jzf-s -std=c++0x
+CCFLAGS=-Ofast -mfpu=vfp -mfloat-abi=hard -march=$(ARCH) -mtune=arm1176jzf-s -s -std=c++0x
 endif
 # flags for gcc
 CFLAGS= -Wall -Werror -g -O0
-CSRC = RF24_gateway.cpp	# The main program
+CFLAGS += -I$(NANOPB_DIR)
+CSRC = RF24_gateway.cpp # The main program
+CSRC += nanopb_RPI.pb.c                 # The compiled protocol definition
+CSRC += $(NANOPB_DIR)/pb_encode.c       # The nanopb encoder
+CSRC += $(NANOPB_DIR)/pb_decode.c       # The nanopb decoder
+CSRC += $(NANOPB_DIR)/pb_common.c       # The nanopb common parts
 
-RF24Mesh_Example: $(CSRC)
-	$(CXX) $(CCFLAGS) -I$(NANOPB_DIR) -lrf24-bcm -lrf24network -lrf24mesh -oRF24Mesh_Example_Master $(CSRC)
+RF24_gateway: $(CSRC)
+        $(CXX) $(CCFLAGS) -I$(NANOPB_DIR) -lrf24-bcm -lrf24network -lrf24mesh -oRF24_gateway $(CSRC)
 
 
+# Build rule for the protocol
+nanopb_RPI.pb.c: nanopb_RPI.proto
+        $(PROTOC) $(PROTOC_OPTS) --nanopb_out=. nanopb_RPI.proto
 
 
 # define all programs
-#PROGRAMS = RF24_gateway 
-
+#PROGRAMS = RF24_gateway
+#SOURCES = ${PROGRAMS:=.cpp} #pb_encode.c pc_decode.c nanopb_RPI.pb.c
 #all: ${PROGRAMS}
 
 #${PROGRAMS}: ${SOURCES}
-#	gcc $(CFLAGS) $(CSOURCES) -o nano.o 
-#	$(CXX) ${CCFLAGS} -Wall -I../ -lrf24-bcm -lrf24network -lrf24mesh nano.o $@.cpp -o $@
+#       gcc $(CFLAGS) $(CSOURCES) -o nano.o
+#       $(CXX) ${CCFLAGS} -Wall -I../ -lrf24-bcm -lrf24network -lrf24mesh nano.o $@.cpp -o $@
 #
 clean:
-	rm -rf $(PROGRAMS)
-	
+        rm -rf $(PROGRAMS)
+
 install: all
-	test -d $(prefix) || mkdir $(prefix)
-	test -d $(prefix)/bin || mkdir $(prefix)/bin
-	for prog in $(PROGRAMS); do \
-	  install -m 0755 $$prog $(prefix)/bin; \
-	done
+        test -d $(prefix) || mkdir $(prefix)
+        test -d $(prefix)/bin || mkdir $(prefix)/bin
+        for prog in $(PROGRAMS); do \
+          install -m 0755 $$prog $(prefix)/bin; \
+        done
 
 .PHONY: install
