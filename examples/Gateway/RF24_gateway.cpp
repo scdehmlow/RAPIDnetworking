@@ -52,7 +52,6 @@ int main(int argc, char** argv) {
     mesh.setNodeID(0);
     // Connect to the mesh
     mesh.begin();
-    mesh.setChannel();
 
     uint8_t buffer[64];
     size_t message_length=sizeof(buffer);
