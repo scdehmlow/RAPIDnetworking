@@ -79,7 +79,6 @@ int main(int argc, char** argv) {
             uint8_t dat[64];
             int m_length;
             m_length=network.read(header,&dat,message_length);
-            printf(" Message length: %i ", m_length/sizeof(dat[0]));
             for (int i=0; i < m_length; i++)
             {
                 printf("%02X",dat[i]);
