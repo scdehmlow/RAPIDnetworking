@@ -1,1 +1,3 @@
-Note: Currently, makefile does not work. To get this to work without makefile, clone directory RF24_pb then overwrite file RF24Mesh_Example_Master.cpp with RF24_gateway.cpp and transfer in all .py files. Edit run_gateway.sh file to run the newly made RF24Mesh_Example_Master file. Finally run the run_gateway file.
+To get a properly formatted master node which connects to the database, first navigate to this directory. Next, make the makefile simply typing "make" into the command line then entering. Next, change permissions of the .sh files with the following commands "chmod +x send_to_database.sh" and "chmod +x run_gateway.sh". To run the gateway, simply use the command "sudo ./run_gateway.sh".
+
+If you find that after a while of changing nodes in and out of the mesh, your messages suddenly stop being received, try removing the file dhcplist.txt under this directory.
