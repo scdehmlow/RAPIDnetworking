@@ -27,7 +27,7 @@ RF24Mesh mesh(radio, network);
  * This will be stored in EEPROM on AVR devices, so remains persistent between further uploads, loss of power, etc.
  *
  **/
-#define nodeID 31    // The node ID for each sensor node should be different
+#define nodeID 21    // The node ID for each sensor node should be different
 
 
 uint32_t displayTimer = 0;
